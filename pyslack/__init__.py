@@ -8,10 +8,10 @@ class SlackError(Exception):
 
 class SlackClient(object):
 
-    BASE_URL = 'https://slack.com/api'
-
-    def __init__(self, token):
+    def __init__(self, token, domain='slack.com'):
         self.token = token
+        self.domain = domain
+        self.base_url = 'https://{0}/api'.format(self.domain)
 
     def _make_request(self, method, params):
         """Make request to API endpoint
